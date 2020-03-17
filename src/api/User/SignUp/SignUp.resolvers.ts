@@ -27,7 +27,7 @@ const resolvers: IResolvers = {
           AND: [{ phoneNumber }, { verified: true }]
         }
       });
-      if (phoneVerification) {
+      if (phoneVerification[0]) {
         await prisma.createUser({
           userId,
           username,

@@ -1,5 +1,5 @@
 import { IResolvers } from "graphql-tools";
-import { prisma } from "../../../../generated/prisma-client";
+import { prisma, Verification } from "../../../../generated/prisma-client";
 import {
   VerifyStartMutationArgs,
   VerifyStartResponse
@@ -18,11 +18,12 @@ const resolvers: IResolvers = {
         const existsVerification = await prisma.verifications({
           where: { phoneNumber }
         });
-        if (existsVerification) {
+        if (existsVerification[0]) {
           await prisma.deleteVerification({ id: existsVerification[0].id });
+          console.log("기존 인증 삭제");
         }
         const secretKey = randomIntGen();
-        const newVerification = await prisma.createVerification({
+        const newVerification: Verification = await prisma.createVerification({
           phoneNumber,
           secretKey,
           verified: false
@@ -31,6 +32,7 @@ const resolvers: IResolvers = {
           newVerification.phoneNumber,
           newVerification.secretKey
         );
+        console.log(newVerification);
         return {
           ok: true,
           error: null
