@@ -6,7 +6,7 @@ import { SignUpMutationArgs, SignUpResponse } from "../../../types/graph";
 const resolvers: IResolvers = {
   Mutation: {
     SignUp: async (_, args: SignUpMutationArgs): Promise<SignUpResponse> => {
-      const { userId, username, password, info, email, phoneNumber } = args;
+      const { userId, username, password, info, phoneNumber } = args;
       const enPassword = await bcrypt.hash(password, 10);
       const existName = await prisma.$exists.user({ username }); // 유저네임 중복 검사
       const existId = await prisma.$exists.user({ userId });
@@ -24,7 +24,7 @@ const resolvers: IResolvers = {
       }
       const phoneVerification = await prisma.verifications({
         where: {
-          AND: [{ payload: phoneNumber }, { verified: true }]
+          AND: [{ phoneNumber }, { verified: true }]
         }
       });
       if (phoneVerification) {

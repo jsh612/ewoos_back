@@ -53,9 +53,8 @@ type File {
 
 type Verification {
   id: ID!
-  target: String!
-  key: String!
-  payload: String!
+  phoneNumber: String!
+  secretKey: String!
   verified: Boolean!
   createdAt: String!
   updatedAt: String

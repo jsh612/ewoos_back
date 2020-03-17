@@ -53,9 +53,8 @@ type File {
 
 type Verification {
   id: ID!
-  target: String!
-  key: String!
-  payload: String!
+  phoneNumber: String!
+  secretKey: String!
   verified: Boolean!
   createdAt: String!
   updatedAt: String
@@ -72,4 +71,10 @@ type SignUpResponse {
 
 type Mutation {
   SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse
+  VerifyStart(phoneNumber: String!): VerifyStartResponse
+}
+
+type VerifyStartResponse {
+  ok: Boolean!
+  error: String
 }

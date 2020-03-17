@@ -10,8 +10,6 @@ import { authenticateJwt } from "./passport";
 
 import schema from "./schema";
 
-console.log("index", process.env.PORT);
-
 const PORT = process.env.PORT || 4000;
 
 const server = new GraphQLServer({
