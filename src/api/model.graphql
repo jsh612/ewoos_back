@@ -1,9 +1,9 @@
 type User {
   id: ID!
+  userId: String!
   username: String!
   password: String!
-  email: String!
-  verifiedEmail: Boolean!
+  info: String
   phoneNumber: String!
   verifiedPhoneNumber: Boolean!
   post: [Post!]

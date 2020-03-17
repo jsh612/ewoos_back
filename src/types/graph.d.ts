@@ -1,16 +1,33 @@
-export const typeDefs = ["type User {\n  id: ID!\n  username: String!\n  password: String!\n  email: String!\n  verifiedEmail: Boolean!\n  phoneNumber: String!\n  verifiedPhoneNumber: Boolean!\n  post: [Post!]\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Post {\n  id: ID!\n  user: User!\n  title: String!\n  location: String!\n  desc: String!\n  files: [File!]!\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Rent {\n  id: ID!\n  post: Post!\n  user: User!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Comment {\n  id: ID!\n  text: String!\n  user: User!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype File {\n  id: ID!\n  url: String!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Verification {\n  id: ID!\n  target: String!\n  key: String!\n  payload: String!\n  verified: Boolean!\n  createdAt: String!\n  updatedAt: String\n}\n\ntype Query {\n  thing: String\n}\n"];
+export const typeDefs = ["type User {\n  id: ID!\n  userId: String!\n  username: String!\n  password: String!\n  info: String\n  phoneNumber: String!\n  verifiedPhoneNumber: Boolean!\n  post: [Post!]\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Post {\n  id: ID!\n  user: User!\n  title: String!\n  location: String!\n  desc: String!\n  files: [File!]!\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Rent {\n  id: ID!\n  post: Post!\n  user: User!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Comment {\n  id: ID!\n  text: String!\n  user: User!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype File {\n  id: ID!\n  url: String!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Verification {\n  id: ID!\n  target: String!\n  key: String!\n  payload: String!\n  verified: Boolean!\n  createdAt: String!\n  updatedAt: String\n}\n\ntype Query {\n  thing: String\n}\n\ntype SignUpResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse\n}\n"];
 /* tslint:disable */
 
 export interface Query {
   thing: string | null;
 }
 
-export interface User {
-  id: string;
+export interface Mutation {
+  SignUp: SignUpResponse | null;
+}
+
+export interface SignUpMutationArgs {
+  userId: string;
   username: string;
   password: string;
-  email: string;
-  verifiedEmail: boolean;
+  info: string | null;
+  phoneNumber: string;
+}
+
+export interface SignUpResponse {
+  ok: boolean;
+  error: string | null;
+}
+
+export interface User {
+  id: string;
+  userId: string;
+  username: string;
+  password: string;
+  info: string | null;
   phoneNumber: string;
   verifiedPhoneNumber: boolean;
   post: Array<Post>;

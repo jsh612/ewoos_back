@@ -1,14 +1,14 @@
 type User {
   id: ID! @id
+  userId: String! @unique 
   username: String! @unique
   password: String!
-  email: String! @unique
-  verifiedEmail: Boolean!
   phoneNumber: String! @unique
   verifiedPhoneNumber: Boolean!
   post: [Post!] @relation (name: "PostsOfUser", onDelete: CASCADE)
   rents: [Rent!] @relation (name: "RentsOfUser", onDelete: CASCADE)
   comments: [Comment!]!@relation(name: "CommentsOfUser", onDelete: CASCADE)
+  info: String
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }
@@ -47,6 +47,16 @@ type File {
   id: ID! @id
   url: String!
   post: Post @relation(name: "FilesOfPost") 
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Verification {
+  id: ID! @id
+  target: String!
+  key: String!
+  payload: String!
+  verified: Boolean!
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }
