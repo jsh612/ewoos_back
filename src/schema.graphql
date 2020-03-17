@@ -71,7 +71,13 @@ type SignUpResponse {
 
 type Mutation {
   SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse
+  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse
   VerifyStart(phoneNumber: String!): VerifyStartResponse
+}
+
+type VerifyCompleteResponse {
+  ok: Boolean!
+  error: String
 }
 
 type VerifyStartResponse {

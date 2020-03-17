@@ -20,22 +20,21 @@ const resolvers: IResolvers = {
         });
         if (existsVerification) {
           await prisma.deleteVerification({ id: existsVerification[0].id });
-        } else {
-          const secretKey = randomIntGen();
-          const newVerification = await prisma.createVerification({
-            phoneNumber,
-            secretKey,
-            verified: false
-          });
-          await sendVerificationSMS(
-            newVerification.phoneNumber,
-            newVerification.secretKey
-          );
-          return {
-            ok: true,
-            error: null
-          };
         }
+        const secretKey = randomIntGen();
+        const newVerification = await prisma.createVerification({
+          phoneNumber,
+          secretKey,
+          verified: false
+        });
+        await sendVerificationSMS(
+          newVerification.phoneNumber,
+          newVerification.secretKey
+        );
+        return {
+          ok: true,
+          error: null
+        };
       } catch (error) {
         return {
           ok: false,
@@ -45,3 +44,5 @@ const resolvers: IResolvers = {
     }
   }
 };
+
+export default resolvers;

@@ -1,0 +1,11 @@
+type VerifyCompleteResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  VerifyComplete(
+    phoneNumber: String!
+    secretKey: String!
+  ): VerifyCompleteResponse
+}
