@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+import cors from "cors";
 import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
 import logger from "morgan";
@@ -11,6 +12,7 @@ const server = new GraphQLServer({
   schema
 });
 
+server.express.use(cors());
 server.express.use(helmet());
 server.express.use(logger("dev"));
 

@@ -1,4 +1,52 @@
 type User {
   id: ID! @id
-  name: String!
+  username: String! @unique
+  password: String!
+  email: String! @unique
+  verifiedEmail: Boolean!
+  phoneNumber: String! @unique
+  verifiedPhoneNumber: Boolean!
+  post: [Post!] @relation (name: "PostsOfUser", onDelete: CASCADE)
+  rents: [Rent!] @relation (name: "RentsOfUser", onDelete: CASCADE)
+  comments: [Comment!]!@relation(name: "CommentsOfUser", onDelete: CASCADE)
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Post {
+  id: ID! @id
+  user: User! @relation(name: "PostsOfUser")
+  title: String!
+  location: String!
+  desc: String!
+  files: [File!]!@relation(name: "FilesOfPost", onDelete: CASCADE)
+  comments: [Comment!] @relation(name: "CommentsOfPost", onDelete: CASCADE)
+  rents: [Rent!] @relation(name: "RentsOfPost", onDelete: CASCADE)
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Rent {
+  id: ID! @id
+  post: Post!  @relation(name: "RentsOfPost")
+  user: User!  @relation(name: "RentsOfUser")
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Comment {
+  id: ID! @id
+  text: String!
+  user: User@relation(name: "CommentsOfUser")
+  post: Post@relation(name: "CommentsOfPost")
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type File {
+  id: ID! @id
+  url: String!
+  post: Post @relation(name: "FilesOfPost") 
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
 }
