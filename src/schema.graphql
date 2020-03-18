@@ -64,15 +64,22 @@ type Query {
   thing: String
 }
 
-type SignUpResponse {
+type LoginResponse {
   ok: Boolean!
   error: String
+  token: String
 }
 
 type Mutation {
-  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse
-  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse
-  VerifyStart(phoneNumber: String!): VerifyStartResponse
+  Login(userId: String!, password: String!): LoginResponse!
+  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!
+  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!
+  VerifyStart(phoneNumber: String!): VerifyStartResponse!
+}
+
+type SignUpResponse {
+  ok: Boolean!
+  error: String
 }
 
 type VerifyCompleteResponse {

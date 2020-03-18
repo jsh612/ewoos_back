@@ -10,5 +10,5 @@ type Mutation {
     password: String!
     info: String
     phoneNumber: String!
-  ): SignUpResponse
+  ): SignUpResponse!
 }

@@ -4,5 +4,5 @@ type VerifyStartResponse {
 }
 
 type Mutation {
-  VerifyStart(phoneNumber: String!): VerifyStartResponse
+  VerifyStart(phoneNumber: String!): VerifyStartResponse!
 }

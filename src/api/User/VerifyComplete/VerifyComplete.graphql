@@ -7,5 +7,5 @@ type Mutation {
   VerifyComplete(
     phoneNumber: String!
     secretKey: String!
-  ): VerifyCompleteResponse
+  ): VerifyCompleteResponse!
 }
