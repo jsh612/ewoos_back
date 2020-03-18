@@ -1,0 +1,8 @@
+type RentStatusResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RentStatusUpdate(status: RentStatus!, rentId: String!): RentStatusResponse!
+}
