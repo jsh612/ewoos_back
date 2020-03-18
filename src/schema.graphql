@@ -10,6 +10,7 @@ type Mutation {
   ReqRent(postId: String!, message: String!): ReqRentResponse!
   Login(userId: String!, password: String!): LoginResponse!
   SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!
+  UpdateProfile(username: String, info: String): UpdateProfileResponse!
   VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!
   VerifyStart(phoneNumber: String!): VerifyStartResponse!
 }
@@ -140,6 +141,11 @@ type LoginResponse {
 }
 
 type SignUpResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdateProfileResponse {
   ok: Boolean!
   error: String
 }
