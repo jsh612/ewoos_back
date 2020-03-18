@@ -8,6 +8,7 @@ type Mutation {
   UploadPost(title: String!, location: String!, desc: String!, category: CategoryOptions!): UploadPostResponse!
   RentStatusUpdate(status: RentStatus!, rentId: String!): RentStatusResponse!
   ReqRent(postId: String!, message: String!): ReqRentResponse!
+  ChangePW(oldPW: String!, newPW: String!): ChangePWResponse!
   Login(userId: String!, password: String!): LoginResponse!
   SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!
   UpdateProfile(username: String, info: String): UpdateProfileResponse!
@@ -124,6 +125,11 @@ type RentStatusResponse {
 }
 
 type ReqRentResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ChangePWResponse {
   ok: Boolean!
   error: String
 }

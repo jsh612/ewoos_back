@@ -1,0 +1,8 @@
+type ChangePWResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  ChangePW(oldPW: String!, newPW: String!): ChangePWResponse!
+}

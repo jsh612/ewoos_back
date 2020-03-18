@@ -17,7 +17,7 @@ const resolvers: IResolvers = {
             token: null
           };
         } else {
-          const boolPW = checkPassword(password, thisUser.password);
+          const boolPW = await checkPassword(password, thisUser.password);
           if (boolPW) {
             const token = generateToken(thisUser.id);
             return {
