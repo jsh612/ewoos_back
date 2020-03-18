@@ -3,10 +3,20 @@ type UploadPostResponse {
   error: String
 }
 
+enum CategoryOptions {
+  DIGITAL
+  FASHION
+  SPORTS
+  CHILD
+  HOUSEHOLD
+  ETC
+}
+
 type Mutation {
   UploadPost(
     title: String!
     location: String!
     desc: String!
+    category: CategoryOptions!
   ): UploadPostResponse!
 }

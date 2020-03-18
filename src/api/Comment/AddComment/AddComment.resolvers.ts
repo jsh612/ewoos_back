@@ -1,33 +1,30 @@
 import { IResolvers } from "graphql-tools";
 import { prisma } from "../../../../generated/prisma-client";
 import {
-  UploadPostMutationArgs,
-  UploadPostResponse
-} from "./../../../types/graph.d";
+  CreateCommentMutationArgs,
+  CreateCommentResponse
+} from "../../../types/graph";
 
 const resolvers: IResolvers = {
   Mutation: {
-    UploadPost: async (
+    CreateComment: async (
       _,
-      args: UploadPostMutationArgs,
+      args: CreateCommentMutationArgs,
       { request, isAuthenticated }
-    ): Promise<UploadPostResponse> => {
+    ): Promise<CreateCommentResponse> => {
       isAuthenticated(request);
       const { user } = request;
-      const { title, location, desc, category } = args;
+      const { text, postId } = args;
       try {
-        const newPost = await prisma.createPost({
-          title,
-          location,
-          desc,
-          category,
+        await prisma.createComment({
           user: {
             connect: { id: user.id }
-          }
+          },
+          post: {
+            connect: { id: postId }
+          },
+          text
         });
-        console.log("새로운 포스트", newPost);
-        // todo
-        // 이미지 업로드하여 해당 file도 post에 추가
         return {
           ok: true,
           error: null

@@ -1,0 +1,8 @@
+type CreateCommentResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  CreateComment(text: String!, postId: String!): CreateCommentResponse!
+}

@@ -19,6 +19,7 @@ type Post {
   title: String!
   location: String!
   desc: String!
+  category: String!
   files: [File!]
   rents: [Rent!]
   comments: [Comment!]
