@@ -62,6 +62,13 @@ type Verification {
 
 type Query {
   thing: String
+  GetMe: GetMeResponse
+}
+
+type GetMeResponse {
+  ok: Boolean!
+  error: String
+  user: User
 }
 
 type LoginResponse {

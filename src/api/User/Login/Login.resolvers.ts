@@ -10,7 +10,6 @@ const resolvers: IResolvers = {
       const { userId, password } = args;
       try {
         const thisUser = await prisma.user({ userId });
-        console.log("유저", thisUser);
         if (!thisUser) {
           return {
             ok: false,
