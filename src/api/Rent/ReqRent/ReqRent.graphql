@@ -1,0 +1,8 @@
+type ReqRentResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  ReqRent(postId: String!, message: String!): ReqRentResponse!
+}

@@ -13,13 +13,22 @@ type User {
   updatedAt: String
 }
 
+enum CategoryOptions {
+  DIGITAL
+  FASHION
+  SPORTS
+  CHILD
+  HOUSEHOLD
+  ETC
+}
+
 type Post {
   id: ID!
   user: User!
   title: String!
   location: String!
   desc: String!
-  category: String!
+  category: CategoryOptions!
   files: [File!]
   rents: [Rent!]
   comments: [Comment!]
@@ -27,10 +36,18 @@ type Post {
   updatedAt: String
 }
 
+enum RentStatus {
+  APPLY
+  RENT
+  DONE
+}
+
 type Rent {
   id: ID!
   post: Post!
   user: User!
+  message: String!
+  status: RentStatus!
   createdAt: String
   updatedAt: String
 }

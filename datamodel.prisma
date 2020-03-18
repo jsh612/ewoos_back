@@ -36,10 +36,18 @@ type Post {
   updatedAt: DateTime @updatedAt
 }
 
+enum RentStatus {
+  APPLY
+  RENT
+  DONE
+}
+
 type Rent {
   id: ID! @id
   post: Post!  @relation(name: "RentsOfPost")
   user: User!  @relation(name: "RentsOfUser")
+  message: String!
+  status: RentStatus!
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

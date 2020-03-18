@@ -6,6 +6,7 @@ type CreateCommentResponse {
 type Mutation {
   CreateComment(text: String!, postId: String!): CreateCommentResponse!
   UploadPost(title: String!, location: String!, desc: String!, category: CategoryOptions!): UploadPostResponse!
+  ReqRent(postId: String!, message: String!): ReqRentResponse!
   Login(userId: String!, password: String!): LoginResponse!
   SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!
   VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!
@@ -27,13 +28,28 @@ type User {
   updatedAt: String
 }
 
+enum CategoryOptions {
+  DIGITAL
+  FASHION
+  SPORTS
+  CHILD
+  HOUSEHOLD
+  ETC
+  DIGITAL
+  FASHION
+  SPORTS
+  CHILD
+  HOUSEHOLD
+  ETC
+}
+
 type Post {
   id: ID!
   user: User!
   title: String!
   location: String!
   desc: String!
-  category: String!
+  category: CategoryOptions!
   files: [File!]
   rents: [Rent!]
   comments: [Comment!]
@@ -41,10 +57,18 @@ type Post {
   updatedAt: String
 }
 
+enum RentStatus {
+  APPLY
+  RENT
+  DONE
+}
+
 type Rent {
   id: ID!
   post: Post!
   user: User!
+  message: String!
+  status: RentStatus!
   createdAt: String
   updatedAt: String
 }
@@ -92,13 +116,9 @@ type UploadPostResponse {
   error: String
 }
 
-enum CategoryOptions {
-  DIGITAL
-  FASHION
-  SPORTS
-  CHILD
-  HOUSEHOLD
-  ETC
+type ReqRentResponse {
+  ok: Boolean!
+  error: String
 }
 
 type GetMeResponse {
