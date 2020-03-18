@@ -1,0 +1,12 @@
+type UploadPostResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  UploadPost(
+    title: String!
+    location: String!
+    desc: String!
+  ): UploadPostResponse!
+}

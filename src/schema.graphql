@@ -6,7 +6,7 @@ type User {
   info: String
   phoneNumber: String!
   verifiedPhoneNumber: Boolean!
-  post: [Post!]
+  posts: [Post!]
   rents: [Rent!]
   comments: [Comment!]
   createdAt: String
@@ -19,7 +19,7 @@ type Post {
   title: String!
   location: String!
   desc: String!
-  files: [File!]!
+  files: [File!]
   rents: [Rent!]
   comments: [Comment!]
   createdAt: String
@@ -65,6 +65,19 @@ type Query {
   GetMe: GetMeResponse
 }
 
+type UploadPostResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  UploadPost(title: String!, location: String!, desc: String!): UploadPostResponse!
+  Login(userId: String!, password: String!): LoginResponse!
+  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!
+  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!
+  VerifyStart(phoneNumber: String!): VerifyStartResponse!
+}
+
 type GetMeResponse {
   ok: Boolean!
   error: String
@@ -75,13 +88,6 @@ type LoginResponse {
   ok: Boolean!
   error: String
   token: String
-}
-
-type Mutation {
-  Login(userId: String!, password: String!): LoginResponse!
-  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!
-  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!
-  VerifyStart(phoneNumber: String!): VerifyStartResponse!
 }
 
 type SignUpResponse {

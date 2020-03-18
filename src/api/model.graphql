@@ -6,7 +6,7 @@ type User {
   info: String
   phoneNumber: String!
   verifiedPhoneNumber: Boolean!
-  post: [Post!]
+  posts: [Post!]
   rents: [Rent!]
   comments: [Comment!]
   createdAt: String
@@ -19,7 +19,7 @@ type Post {
   title: String!
   location: String!
   desc: String!
-  files: [File!]!
+  files: [File!]
   rents: [Rent!]
   comments: [Comment!]
   createdAt: String

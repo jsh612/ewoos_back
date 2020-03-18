@@ -1,4 +1,4 @@
-export const typeDefs = ["type User {\n  id: ID!\n  userId: String!\n  username: String!\n  password: String!\n  info: String\n  phoneNumber: String!\n  verifiedPhoneNumber: Boolean!\n  post: [Post!]\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Post {\n  id: ID!\n  user: User!\n  title: String!\n  location: String!\n  desc: String!\n  files: [File!]!\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Rent {\n  id: ID!\n  post: Post!\n  user: User!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Comment {\n  id: ID!\n  text: String!\n  user: User!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype File {\n  id: ID!\n  url: String!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Verification {\n  id: ID!\n  phoneNumber: String!\n  secretKey: String!\n  verified: Boolean!\n  createdAt: String!\n  updatedAt: String\n}\n\ntype Query {\n  thing: String\n  GetMe: GetMeResponse\n}\n\ntype GetMeResponse {\n  ok: Boolean!\n  error: String\n  user: User\n}\n\ntype LoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype Mutation {\n  Login(userId: String!, password: String!): LoginResponse!\n  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!\n  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!\n  VerifyStart(phoneNumber: String!): VerifyStartResponse!\n}\n\ntype SignUpResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype VerifyCompleteResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype VerifyStartResponse {\n  ok: Boolean!\n  error: String\n}\n"];
+export const typeDefs = ["type User {\n  id: ID!\n  userId: String!\n  username: String!\n  password: String!\n  info: String\n  phoneNumber: String!\n  verifiedPhoneNumber: Boolean!\n  posts: [Post!]\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Post {\n  id: ID!\n  user: User!\n  title: String!\n  location: String!\n  desc: String!\n  files: [File!]\n  rents: [Rent!]\n  comments: [Comment!]\n  createdAt: String\n  updatedAt: String\n}\n\ntype Rent {\n  id: ID!\n  post: Post!\n  user: User!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Comment {\n  id: ID!\n  text: String!\n  user: User!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype File {\n  id: ID!\n  url: String!\n  post: Post!\n  createdAt: String\n  updatedAt: String\n}\n\ntype Verification {\n  id: ID!\n  phoneNumber: String!\n  secretKey: String!\n  verified: Boolean!\n  createdAt: String!\n  updatedAt: String\n}\n\ntype Query {\n  thing: String\n  GetMe: GetMeResponse\n}\n\ntype UploadPostResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  UploadPost(title: String!, location: String!, desc: String!): UploadPostResponse!\n  Login(userId: String!, password: String!): LoginResponse!\n  SignUp(userId: String!, username: String!, password: String!, info: String, phoneNumber: String!): SignUpResponse!\n  VerifyComplete(phoneNumber: String!, secretKey: String!): VerifyCompleteResponse!\n  VerifyStart(phoneNumber: String!): VerifyStartResponse!\n}\n\ntype GetMeResponse {\n  ok: Boolean!\n  error: String\n  user: User\n}\n\ntype LoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype SignUpResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype VerifyCompleteResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype VerifyStartResponse {\n  ok: Boolean!\n  error: String\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -20,7 +20,7 @@ export interface User {
   info: string | null;
   phoneNumber: string;
   verifiedPhoneNumber: boolean;
-  post: Array<Post>;
+  posts: Array<Post>;
   rents: Array<Rent>;
   comments: Array<Comment>;
   createdAt: string | null;
@@ -66,10 +66,17 @@ export interface Comment {
 }
 
 export interface Mutation {
+  UploadPost: UploadPostResponse;
   Login: LoginResponse;
   SignUp: SignUpResponse;
   VerifyComplete: VerifyCompleteResponse;
   VerifyStart: VerifyStartResponse;
+}
+
+export interface UploadPostMutationArgs {
+  title: string;
+  location: string;
+  desc: string;
 }
 
 export interface LoginMutationArgs {
@@ -92,6 +99,11 @@ export interface VerifyCompleteMutationArgs {
 
 export interface VerifyStartMutationArgs {
   phoneNumber: string;
+}
+
+export interface UploadPostResponse {
+  ok: boolean;
+  error: string | null;
 }
 
 export interface LoginResponse {

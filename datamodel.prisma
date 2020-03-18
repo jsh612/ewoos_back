@@ -5,7 +5,7 @@ type User {
   password: String!
   phoneNumber: String! @unique
   verifiedPhoneNumber: Boolean!
-  post: [Post!] @relation (name: "PostsOfUser", onDelete: CASCADE)
+  posts: [Post!] @relation (name: "PostsOfUser", onDelete: CASCADE)
   rents: [Rent!] @relation (name: "RentsOfUser", onDelete: CASCADE)
   comments: [Comment!]!@relation(name: "CommentsOfUser", onDelete: CASCADE)
   info: String
@@ -19,7 +19,7 @@ type Post {
   title: String!
   location: String!
   desc: String!
-  files: [File!]!@relation(name: "FilesOfPost", onDelete: CASCADE)
+  files: [File!] @relation(name: "FilesOfPost", onDelete: CASCADE)
   comments: [Comment!] @relation(name: "CommentsOfPost", onDelete: CASCADE)
   rents: [Rent!] @relation(name: "RentsOfPost", onDelete: CASCADE)
   createdAt: DateTime @createdAt
