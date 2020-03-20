@@ -144,6 +144,7 @@ type LoginResponse {
   ok: Boolean!
   error: String
   token: String
+  username: String
 }
 
 type SignUpResponse {

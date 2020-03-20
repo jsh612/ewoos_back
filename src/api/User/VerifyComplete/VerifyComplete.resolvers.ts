@@ -27,6 +27,13 @@ const resolvers: IResolvers = {
               id: verifedPhone[0].id
             }
           });
+          // 인증 완료시 비밀 문자열 초기화
+          await prisma.updateVerification({
+            where: { id: verifedPhone[0].id },
+            data: {
+              secretKey: ""
+            }
+          });
           return {
             ok: true,
             error: null

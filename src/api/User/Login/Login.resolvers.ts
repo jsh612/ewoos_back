@@ -14,7 +14,8 @@ const resolvers: IResolvers = {
           return {
             ok: false,
             error: "해당 아이디의 계정이 없습니다.",
-            token: null
+            token: null,
+            username: null
           };
         } else {
           const boolPW = await checkPassword(password, thisUser.password);
@@ -23,13 +24,15 @@ const resolvers: IResolvers = {
             return {
               ok: true,
               error: null,
-              token
+              token,
+              username: thisUser.username
             };
           } else {
             return {
               ok: false,
               error: "비밀번호가 일치하지 않습니다.",
-              token: null
+              token: null,
+              username: null
             };
           }
         }
@@ -37,7 +40,8 @@ const resolvers: IResolvers = {
         return {
           ok: false,
           error,
-          token: null
+          token: null,
+          username: null
         };
       }
     }
