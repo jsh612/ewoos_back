@@ -11,6 +11,8 @@ import { authenticateJwt } from "./passport";
 import schema from "./schema";
 
 const PORT = process.env.PORT || 4000;
+const PLAYGROUND_ENDPOINT: string = "/playground";
+const GRAPHQL_ENDPOINT: string = "/graphql";
 
 const server = new GraphQLServer({
   schema,
@@ -24,10 +26,13 @@ server.express.use(authenticateJwt);
 
 server.start(
   {
-    port: PORT
+    port: PORT,
+    playground: PLAYGROUND_ENDPOINT,
+    endpoint: GRAPHQL_ENDPOINT
     // playground 옵션 : false일 경우 playground 접속 불가 (최종 배포시 설정하면 좋을 듯)
     // 배포시 prisma.yml의 secret도 같이 하면 될듯
     // playground: false
   },
-  () => console.log(`GraphQL서버  http://localhost:${PORT}`)
+  () =>
+    console.log(`GraphQL서버  http://localhost:${PORT}${PLAYGROUND_ENDPOINT}`)
 );
