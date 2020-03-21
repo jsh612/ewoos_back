@@ -32,7 +32,7 @@ const resolvers: IResolvers = {
           newVerification.phoneNumber,
           newVerification.secretKey
         );
-        console.log(newVerification);
+        // 시간타이머 작성 (인증 3분 후 자동 삭제)
         return {
           ok: true,
           error: null
