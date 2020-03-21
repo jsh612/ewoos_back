@@ -21,19 +21,14 @@ const resolvers: IResolvers = {
         if (verifedPhone[0]) {
           await prisma.updateVerification({
             data: {
-              verified: true
+              verified: true,
+              secretKey: "" // 인증 완료시 비밀 문자열 초기화
             },
             where: {
               id: verifedPhone[0].id
             }
           });
-          // 인증 완료시 비밀 문자열 초기화
-          await prisma.updateVerification({
-            where: { id: verifedPhone[0].id },
-            data: {
-              secretKey: ""
-            }
-          });
+
           return {
             ok: true,
             error: null

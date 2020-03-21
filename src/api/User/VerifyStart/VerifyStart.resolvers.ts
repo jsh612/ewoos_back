@@ -20,7 +20,6 @@ const resolvers: IResolvers = {
         });
         if (existsVerification[0]) {
           await prisma.deleteVerification({ id: existsVerification[0].id });
-          console.log("기존 인증 삭제");
         }
         const secretKey = randomIntGen();
         const newVerification: Verification = await prisma.createVerification({
