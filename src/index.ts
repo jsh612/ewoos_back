@@ -9,6 +9,7 @@ import { isAuthenticated } from "./middlewares";
 import { authenticateJwt } from "./passport";
 
 import schema from "./schema";
+import { uploadController, uploadMiddleware } from "./upload";
 
 const PORT = process.env.PORT || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";
@@ -23,6 +24,7 @@ server.express.use(cors());
 server.express.use(helmet());
 server.express.use(logger("dev"));
 server.express.use(authenticateJwt);
+server.express.post("/api/upload", uploadMiddleware, uploadController);
 
 server.start(
   {
