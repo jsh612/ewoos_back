@@ -30,9 +30,9 @@ type Post {
   desc: String!
   # category: CategoryOptions!
   category: String!
-  files: [File!]
-  rents: [Rent!]
-  comments: [Comment!]
+  files: [File]
+  rents: [Rent]
+  comments: [Comment]
   createdAt: String
   updatedAt: String
 }

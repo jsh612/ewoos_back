@@ -16,9 +16,7 @@ const resolvers: IResolvers = {
       const { user } = request;
       const { title, location, desc, category, files } = args;
       try {
-        console.log("파일", files);
-        console.log("카테고리", category);
-        const newPost = await prisma.createPost({
+        const newPost: any = await prisma.createPost({
           title,
           location,
           desc,
@@ -36,12 +34,14 @@ const resolvers: IResolvers = {
         );
         return {
           ok: true,
-          error: null
+          error: null,
+          post: newPost
         };
       } catch (error) {
         return {
           ok: false,
-          error
+          error,
+          post: null
         };
       }
     }

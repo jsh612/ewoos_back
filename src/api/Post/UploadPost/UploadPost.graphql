@@ -1,6 +1,7 @@
 type UploadPostResponse {
   ok: Boolean!
   error: String
+  post: Post
 }
 
 # enum CategoryOptions {
