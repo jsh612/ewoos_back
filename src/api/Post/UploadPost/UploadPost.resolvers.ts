@@ -1,6 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import { prisma } from "../../../../generated/prisma-client";
 import {
+  Post,
   UploadPostMutationArgs,
   UploadPostResponse
 } from "./../../../types/graph.d";
@@ -16,7 +17,7 @@ const resolvers: IResolvers = {
       const { user } = request;
       const { title, location, desc, category, files } = args;
       try {
-        const newPost: any = await prisma.createPost({
+        const newPost = await prisma.createPost({
           title,
           location,
           desc,
@@ -35,7 +36,7 @@ const resolvers: IResolvers = {
         return {
           ok: true,
           error: null,
-          post: newPost
+          post: newPost as Post
         };
       } catch (error) {
         return {

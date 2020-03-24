@@ -1,0 +1,9 @@
+type PostDetailResponse {
+  ok: Boolean!
+  error: String
+  post: Post
+}
+
+type Query {
+  PostDetail(postId: String!): PostDetailResponse
+}

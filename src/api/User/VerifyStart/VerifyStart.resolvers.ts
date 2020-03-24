@@ -5,7 +5,7 @@ import {
   VerifyStartResponse
 } from "../../../types/graph";
 import { randomIntGen } from "../../../utils/etcUtils";
-// import { sendVerificationSMS } from "../../../utils/sendSMS";
+import { sendVerificationSMS } from "../../../utils/sendSMS";
 
 const resolvers: IResolvers = {
   Mutation: {
@@ -27,10 +27,10 @@ const resolvers: IResolvers = {
           secretKey,
           verified: false
         });
-        // await sendVerificationSMS(
-        //   newVerification.phoneNumber,
-        //   newVerification.secretKey
-        // );
+        await sendVerificationSMS(
+          newVerification.phoneNumber,
+          newVerification.secretKey
+        );
         console.log("newVerification", newVerification);
         // 시간타이머 작성 (인증 3분 후 자동 삭제)
         return {
