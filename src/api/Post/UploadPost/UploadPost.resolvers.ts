@@ -14,8 +14,10 @@ const resolvers: IResolvers = {
     ): Promise<UploadPostResponse> => {
       isAuthenticated(request);
       const { user } = request;
-      const { title, location, desc, category } = args;
+      const { title, location, desc, category, files } = args;
       try {
+        console.log("파일", files);
+        console.log("카테고리", category);
         const newPost = await prisma.createPost({
           title,
           location,
@@ -25,9 +27,13 @@ const resolvers: IResolvers = {
             connect: { id: user.id }
           }
         });
-        console.log("새로운 포스트", newPost);
-        // todo
-        // 이미지 업로드하여 해당 file도 post에 추가
+        files.forEach(
+          async file =>
+            await prisma.createFile({
+              url: file,
+              post: { connect: { id: newPost.id } }
+            })
+        );
         return {
           ok: true,
           error: null

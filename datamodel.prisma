@@ -13,22 +13,13 @@ type User {
   updatedAt: DateTime @updatedAt
 }
 
-enum CategoryOptions {
-  DIGITAL
-  FASHION
-  SPORTS
-  CHILD
-  HOUSEHOLD
-  ETC
-}
-
 type Post {
   id: ID! @id
   user: User! @relation(name: "PostsOfUser")
   title: String!
   location: String!
   desc: String!
-  category: CategoryOptions!
+  category: String!
   files: [File!] @relation(name: "FilesOfPost", onDelete: CASCADE)
   comments: [Comment!] @relation(name: "CommentsOfPost", onDelete: CASCADE)
   rents: [Rent!] @relation(name: "RentsOfPost", onDelete: CASCADE)

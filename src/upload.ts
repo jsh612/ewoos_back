@@ -27,9 +27,9 @@ const upload = multer({
 
 // single("input태그 name")
 // (formData 이용시 : formData.append("여기이름", 파일)) -->formData.append("file", 파일)
-export const uploadMiddleware = upload.array("file", 5);
+export const uploadMiddleware = upload.array("files");
 
 export const uploadController = (req, res) => {
-  console.log("업로드된 파일", req.files);
-  res.json(req.files.map(v => v.location));
+  console.log(req.files);
+  return res.json(req.files.map(v => v.location));
 };

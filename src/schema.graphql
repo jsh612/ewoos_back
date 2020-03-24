@@ -5,7 +5,7 @@ type CreateCommentResponse {
 
 type Mutation {
   CreateComment(text: String!, postId: String!): CreateCommentResponse!
-  UploadPost(title: String!, location: String!, desc: String!, category: CategoryOptions!): UploadPostResponse!
+  UploadPost(title: String!, location: String!, desc: String!, category: String!, files: [String!]): UploadPostResponse!
   RentStatusUpdate(status: RentStatus!, rentId: String!): RentStatusResponse!
   ReqRent(postId: String!, message: String!): ReqRentResponse!
   ChangePW(oldPW: String!, newPW: String!): ChangePWResponse!
@@ -31,28 +31,14 @@ type User {
   updatedAt: String
 }
 
-enum CategoryOptions {
-  DIGITAL
-  FASHION
-  SPORTS
-  CHILD
-  HOUSEHOLD
-  ETC
-  DIGITAL
-  FASHION
-  SPORTS
-  CHILD
-  HOUSEHOLD
-  ETC
-}
-
 type Post {
   id: ID!
   user: User!
   title: String!
   location: String!
   desc: String!
-  category: CategoryOptions!
+  # category: CategoryOptions!
+  category: String!
   files: [File!]
   rents: [Rent!]
   comments: [Comment!]
