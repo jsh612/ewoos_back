@@ -13,7 +13,6 @@ const resolvers: IResolvers = {
       args: PostDetailQueryArgs,
       { request, isAuthenticated }
     ): Promise<PostDetailResponse> => {
-      isAuthenticated(request);
       const { postId } = args;
       try {
         const itPost = await prisma.post({ id: postId });
