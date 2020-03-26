@@ -12,13 +12,16 @@ const resolvers: IResolvers = {
       _,
       args: CategoryPostQueryArgs
     ): Promise<CategoryPostResponse> => {
-      const { category } = args;
+      const { category, pageNumber, items } = args;
       try {
         if (category) {
           const posts = await prisma.posts({
+            first: items,
+            skip: pageNumber,
             where: {
               category
-            }
+            },
+            orderBy: "createdAt_DESC"
           });
           if (posts.length !== 0) {
             return {
@@ -34,7 +37,10 @@ const resolvers: IResolvers = {
             };
           }
         } else {
-          const posts = await prisma.posts();
+          const posts = await prisma.posts({
+            first: items,
+            skip: pageNumber
+          });
           return {
             ok: true,
             error: null,

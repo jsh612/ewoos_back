@@ -5,5 +5,9 @@ type CategoryPostResponse {
 }
 
 type Query {
-  CategoryPost(category: String): CategoryPostResponse
+  CategoryPost(
+    category: String
+    pageNumber: Int!
+    items: Int!
+  ): CategoryPostResponse
 }

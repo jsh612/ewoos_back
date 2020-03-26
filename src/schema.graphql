@@ -90,7 +90,7 @@ type Verification {
 
 type Query {
   thing: String
-  CategoryPost(category: String): CategoryPostResponse
+  CategoryPost(category: String, pageNumber: Int!, items: Int!): CategoryPostResponse
   PostDetail(postId: String!): PostDetailResponse
   SearchPost(term: String!): SearchPostResponse!
   GetMe: GetMeResponse
