@@ -90,9 +90,16 @@ type Verification {
 
 type Query {
   thing: String
+  CategoryPost(category: String): CategoryPostResponse
   PostDetail(postId: String!): PostDetailResponse
   SearchPost(term: String!): SearchPostResponse!
   GetMe: GetMeResponse
+}
+
+type CategoryPostResponse {
+  ok: Boolean!
+  error: String
+  posts: [Post]
 }
 
 type PostDetailResponse {

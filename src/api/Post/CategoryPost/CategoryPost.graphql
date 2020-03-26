@@ -1,0 +1,9 @@
+type CategoryPostResponse {
+  ok: Boolean!
+  error: String
+  posts: [Post]
+}
+
+type Query {
+  CategoryPost(category: String): CategoryPostResponse
+}
