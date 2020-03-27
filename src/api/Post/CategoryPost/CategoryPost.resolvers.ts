@@ -21,7 +21,7 @@ const resolvers: IResolvers = {
             where: {
               category
             },
-            orderBy: "createdAt_DESC"
+            orderBy: "createdAt_ASC"
           });
           if (posts.length !== 0) {
             return {
