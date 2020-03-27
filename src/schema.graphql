@@ -6,7 +6,7 @@ type CreateCommentResponse {
 type Mutation {
   CreateComment(text: String!, postId: String!): CreateCommentResponse!
   UploadPost(title: String!, location: String!, desc: String!, category: String!, files: [String!]): UploadPostResponse!
-  RentStatusUpdate(status: RentStatus!, rentId: String!): RentStatusResponse!
+  RentStatusUpdate(status: String!, rentId: String!): RentStatusResponse!
   ReqRent(postId: String!, message: String!): ReqRentResponse!
   ChangePW(oldPW: String!, newPW: String!): ChangePWResponse!
   Login(userId: String!, password: String!): LoginResponse!
@@ -47,7 +47,7 @@ type Post {
 }
 
 enum RentStatus {
-  APPLY
+  REQUEST
   RENT
   DONE
 }

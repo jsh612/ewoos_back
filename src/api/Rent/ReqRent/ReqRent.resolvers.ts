@@ -34,7 +34,7 @@ const resolvers: IResolvers = {
             connect: { id: user.id }
           },
           message,
-          status: "APPLY"
+          status: "REQUEST"
         });
         return {
           ok: true,

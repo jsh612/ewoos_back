@@ -15,7 +15,11 @@ const resolvers: IResolvers = {
       isAuthenticated(request);
       const { status, rentId } = args;
       try {
-        await prisma.updateRent({ data: { status }, where: { id: rentId } });
+        if (status === "RENT") {
+          await prisma.updateRent({ data: { status }, where: { id: rentId } });
+        } else {
+          await prisma.deleteRent({ id: rentId });
+        }
         return {
           ok: true,
           error: null

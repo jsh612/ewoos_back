@@ -4,5 +4,5 @@ type RentStatusResponse {
 }
 
 type Mutation {
-  RentStatusUpdate(status: RentStatus!, rentId: String!): RentStatusResponse!
+  RentStatusUpdate(status: String!, rentId: String!): RentStatusResponse!
 }

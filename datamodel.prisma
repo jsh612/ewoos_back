@@ -28,7 +28,7 @@ type Post {
 }
 
 enum RentStatus {
-  APPLY
+  REQUEST
   RENT
   DONE
 }
