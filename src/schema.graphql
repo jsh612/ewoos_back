@@ -92,7 +92,7 @@ type Query {
   thing: String
   CategoryPost(category: String, pageNumber: Int!, items: Int!): CategoryPostResponse
   PostDetail(postId: String!): PostDetailResponse
-  SearchPost(term: String!): SearchPostResponse!
+  SearchPost(term: String!, pageNumber: Int!, items: Int!): SearchPostResponse!
   GetMe: GetMeResponse
 }
 

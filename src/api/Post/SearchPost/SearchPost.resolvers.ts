@@ -12,9 +12,11 @@ const resolvers: IResolvers = {
       _,
       args: SearchPostQueryArgs
     ): Promise<SearchPostResponse> => {
-      const { term } = args;
+      const { term, pageNumber, items } = args;
       try {
         const postsArr = await prisma.posts({
+          first: items,
+          skip: pageNumber,
           where: {
             title_contains: term
           }
