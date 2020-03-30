@@ -21,7 +21,11 @@
     "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api",
     "start": "cd dist && node ."
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "tslint-config-prettier": "^1.18.0"
+  },
   "dependencies": {
     "@types/multer": "^1.4.2",
     "@types/multer-s3": "^2.7.7",
@@ -57,9 +61,6 @@
     "@types/passport": "^1.0.3",
     "@types/passport-jwt": "^3.0.3",
     "@types/random-int": "^2.0.3",
-    "nodemon": "^2.0.2",
-    "ts-node": "^8.6.2",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.2"
   }
 }
