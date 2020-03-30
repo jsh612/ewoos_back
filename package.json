@@ -18,7 +18,7 @@
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
     "prebuild": "rm -rf dist",
     "build": "tsc",
-    "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api && prisma",
+    "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api && yarn prisma",
     "start": "cd dist && node ."
   },
   "devDependencies": {},
