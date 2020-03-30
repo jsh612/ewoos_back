@@ -43,6 +43,7 @@
     "multer-s3": "^2.9.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "prisma": "^1.34.10",
     "prisma-client-lib": "^1.34.10",
     "random-int": "^2.0.1",
     "tslint": "^6.0.0",
