@@ -30,6 +30,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "generated"
+    "generated",
+    "schema.graphql"
   ]
 }
