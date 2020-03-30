@@ -1,8 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import { prisma } from "../../../../generated/prisma-client";
 import { LoginMutationArgs, LoginResponse } from "../../../types/graph";
-import { generateToken } from "../../../utils";
-import { checkPassword } from "../../../utils/etcUtils";
+import { checkPassword, generateToken } from "../../../utils/etcUtils";
 
 const resolvers: IResolvers = {
   Mutation: {
