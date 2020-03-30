@@ -17,8 +17,8 @@
     "pretypes": "gql-merge --out-file ./src/schema.graphql ./src/api/**/*.graphql",
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
     "prebuild": "rm -rf dist",
-    "build": "tsc",
-    "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api && yarn run prisma",
+    "build": "yarn run prisma && tsc",
+    "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api",
     "start": "cd dist && node ."
   },
   "devDependencies": {},
