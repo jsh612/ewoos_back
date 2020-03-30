@@ -63,5 +63,8 @@
     "tslint": "^6.0.0",
     "twilio": "^3.40.0",
     "typescript": "^3.8.2"
+  },
+  "engines": {
+    "node": ">=12.16.1"
   }
 }
