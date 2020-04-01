@@ -1,9 +1,9 @@
-## 이웃집 대여점 Back-end
+## 이웃집 대여소 Back-end
 #### 사용 스택
 * Typescript, Graphql, Prisma, Postgres, aws EC2, aws S3
 
 
-## 이웃집 대여점 Front-end(https://github.com/jsh612/ewoos_web)
+## 이웃집 대여소 Front-end(https://github.com/jsh612/ewoos_web)
 #### 사용 스택
 * React, Apollo, Typescript
 #### 주요 기능 특징
